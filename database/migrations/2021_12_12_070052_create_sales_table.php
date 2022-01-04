@@ -14,7 +14,11 @@ class CreateSalesTable extends Migration
     public function up()
     {
         Schema::create('sales', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('id')->primary();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('customer_id')->constrained();
+            $table->foreignId('product_id')->constrained();
+            $table->string('product_review',1000);
             $table->timestamps();
         });
     }
